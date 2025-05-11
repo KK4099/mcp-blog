@@ -1,0 +1,14 @@
+---
+title: "modelcontextprotocol/java-sdk"
+date: 2025-05-11T01:28:19.515877+00:00
+tags: ["MCP"]
+draft: false
+---
+
+<p>```json
+{
+  "title": "使用 Model Context Protocol Java SDK 的入门指南",
+  "tutorial_html": "<p>Model Context Protocol（MCP）是一个强大的工具集，旨在简化机器学习模型在不同上下文中的集成和部署。本文将带您了解如何使用 Model Context Protocol 的官方 Java SDK 来与 MCP 服务器和客户端进行交互。本教程将涵盖安装、基本使用和一些常见的操作。</p><h2>安装和设置</h2><p>首先，您需要从 GitHub 仓库中获取 Java SDK。您可以通过以下链接访问仓库：<a href=\"https://github.com/modelcontextprotocol/java-sdk\">modelcontextprotocol/java-sdk</a>。下载或克隆仓库到您的本地机器。</p><pre><code>git clone https://github.com/modelcontextprotocol/java-sdk.git</code></pre><p>接下来，确保您的项目使用了 Maven 或 Gradle 作为构建工具。您需要在项目的配置文件中添加对 MCP Java SDK 的依赖。</p><h3>Maven</h3><pre><code>&lt;dependency&gt;\n    &lt;groupId&gt;com.modelcontextprotocol&lt;/groupId&gt;\n    &lt;artifactId&gt;java-sdk&lt;/artifactId&gt;\n    &lt;version&gt;1.0.0&lt;/version&gt;\n&lt;/dependency&gt;</code></pre><h3>Gradle</h3><pre><code>implementation 'com.modelcontextprotocol:java-sdk:1.0.0'</code></pre><h2>基本使用</h2><p>配置完成后，您可以开始使用 MCP Java SDK。以下是一个简单的例子，展示如何连接到 MCP 服务器并执行基本操作。</p><h3>初始化客户端</h3><p>首先，您需要创建一个 MCP 客户端实例。您可以通过提供服务器的 URL 和必要的认证信息来完成这一操作。</p><pre><code>import com.modelcontextprotocol.sdk.McpClient;\n\npublic class McpExample {\n    public static void main(String[] args) {\n        McpClient client = new McpClient(\"http://your-mcp-server-url\", \"your-api-key\");\n        // 继续进行其他操作\n    }\n}</code></pre><h3>执行操作</h3><p>一旦您成功初始化了客户端，就可以使用它来执行各种操作，比如获取模型列表、上传新模型、运行模型预测等。以下是如何获取模型列表的示例：</p><pre><code>List&lt;Model&gt; models = client.getModels();\nfor (Model model : models) {\n    System.out.println(\"Model ID: \" + model.getId());\n    System.out.println(\"Model Name: \" + model.getName());\n}</code></pre><h2>常见操作</h2><p>MCP Java SDK 提供了多种方法来简化与 MCP 服务器的交互。以下是一些常见的操作及其示例代码。</p><h3>上传模型</h3><p>您可以使用 SDK 上传新的机器学习模型到 MCP 服务器。</p><pre><code>File modelFile = new File(\"path/to/your/model.zip\");\nString modelId = client.uploadModel(modelFile);\nSystem.out.println(\"Uploaded Model ID: \" + modelId);</code></pre><h3>运行预测</h3><p>使用上传的模型，您可以运行预测任务。</p><pre><code>Map&lt;String, Object&gt; input = new HashMap&lt;&gt;();\ninput.put(\"feature1\", 0.5);\ninput.put(\"feature2\", 1.5);\n\nMap&lt;String, Object&gt; result = client.runPrediction(modelId, input);\nSystem.out.println(\"Prediction Result: \" + result);</code></pre><h2>总结</h2><p>通过本文的介绍，您应该能够初步掌握如何使用 Model Context Protocol 的 Java SDK 来与 MCP 服务器和客户端进行交互。无论是获取模型、上传模型还是运行预测，MCP SDK 都为您提供了便捷的接口。希望本教程能帮助您更好地利用 MCP 来简化您的机器学习模型管理工作。</p><p>如需更详细的信息，请访问 <a href=\"https://github.com/modelcontextprotocol/java-sdk\">官方 GitHub 仓库</a>。</p>",
+  "tags": ["MCP", "Java SDK", "机器学习", "API集成", "Spring AI"]
+}
+```</p><p>本教程由 <a href="https://www.lumjf.com/" target="_blank">@https://www.lumjf.com/ 全模型中转api可免费试用</a> 自动生成。</p>

@@ -120,15 +120,19 @@ def write_markdown(info: Dict, tutorial: Dict) -> Path:
     slug = slugify(info["name"])
     md_path = CONTENT_DIR / f"{slug}.md"
     md_path.parent.mkdir(parents=True, exist_ok=True)
+    tags = ', '.join(f'"{t}"' for t in tutorial.get('tags', []))
+    # 推广段落
+    promo = '<p>本教程由 <a href="https://www.lumjf.com/" target="_blank">@https://www.lumjf.com/ 全模型中转api可免费试用</a> 自动生成。</p>'
+    body = tutorial["tutorial_html"] + promo
     front = (
         f"---\n"
         f"title: \"{tutorial['title']}\"\n"
         f"date: {datetime.now(timezone.utc).isoformat()}\n"
-        f"tags: [{', '.join(['\"'+t+'\"' for t in tutorial.get('tags', [])])}]\n"
+        f"tags: [{tags}]\n"
         f"draft: false\n"
         f"---\n\n"
     )
-    md_path.write_text(front + tutorial["tutorial_html"], encoding="utf-8")
+    md_path.write_text(front + body, encoding="utf-8")
     return md_path
 
 def git_commit_push(msg: str):
