@@ -1,0 +1,6 @@
+[
+  {
+    "type": "github_search",
+    "note": "主抓取由脚本内 search API 完成，保留此文件方便以后追加 RSS 源"
+  }
+] 
